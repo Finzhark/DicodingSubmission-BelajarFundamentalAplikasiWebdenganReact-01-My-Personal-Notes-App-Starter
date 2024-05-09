@@ -1,6 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import NoteAddPage from './pages/NoteAddPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -16,6 +18,11 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/archive" element={<ArchivePage />} />
+          <Route path="/notes/new" element={<NoteAddPage />} />
+          <Route path="/notes:id" element={<NoteDetailPage />} />
+          {/* <Route path="/notes:id/edit" element={<NoteEditPage />} /> */}
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </div>
