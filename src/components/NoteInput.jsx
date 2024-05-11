@@ -31,13 +31,13 @@ class NoteInput extends Component {
           <input 
             type="text" 
             className="add-new-page__input__title" 
-            placeholder='Tambahkan Judul' 
+            placeholder='Ketik Judul Di Sini' 
             value={this.state.title} 
             onChange={(event) => this.onTitleChange(event)} />
           <div 
             className="add-new-page__input__body" 
             contentEditable 
-            data-placeholder='Tambahkan Isi' 
+            data-placeholder='Dear Catatan, aku ingin mencatat...' 
             onInput={(event) => this.onInputHandler(event)}
           />
         </div>
