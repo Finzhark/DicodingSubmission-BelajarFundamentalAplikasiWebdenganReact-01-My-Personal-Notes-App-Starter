@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import NoteItemList from '../components/NoteItemList';
-import SearchNote from '../components/SearchNote';
+import NoteListItem from '../components/NoteListItem';
+import NoteSearch from '../components/NoteSearch';
 import { getArchivedNotes, searchNotes } from '../utils/local-data';
 import PropTypes from 'prop-types';
 
@@ -14,7 +14,12 @@ function ArchivePageWrapper() {
     setSearchParams({ title: keyword });
   }
 
-  return <ArchivePage onSearch={changeSearchParams} defaultKeyword={title} />
+  return (
+    <ArchivePage 
+      onSearch={changeSearchParams} 
+      defaultKeyword={title} 
+    />
+  )
 }
 
 class ArchivePage extends Component {
@@ -39,8 +44,8 @@ class ArchivePage extends Component {
 
     return (
       <section className='archives-page'>
-        <SearchNote onSearch={this.onSearch} />
-        <NoteItemList notes={notes} />
+        <NoteSearch onSearch={this.onSearch} />
+        <NoteListItem notes={notes} />
       </section>
     )
   }

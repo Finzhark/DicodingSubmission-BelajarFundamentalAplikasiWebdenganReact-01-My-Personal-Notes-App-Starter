@@ -64,7 +64,11 @@ function getArchivedNotes() {
 
 function addNote({ title, body }) {
   notes = [...notes, {
-    id: `notes-${+new Date()}`, title: title || '(untitled)', body, createdAt: new Date().toISOString(), archived: false,
+    id: `notes-${+new Date()}`, 
+    title: title || '(untitled)', 
+    body, 
+    createdAt: new Date().toISOString(), 
+    archived: false,
   }];
 }
 
@@ -91,6 +95,10 @@ function unarchiveNote(id) {
   });
 }
 
+function searchNotes(notes, keyword) {
+  return notes.filter(note => note.title.toLowerCase().includes(keyword.toLowerCase()))
+}
+
 function editNote({ id, title, body }) {
   const noteToEdit = notes.find((note) => note.id === id);
   noteToEdit.title = title;
@@ -113,5 +121,6 @@ export {
   getNote,
   archiveNote,
   unarchiveNote,
+  searchNotes,
   addNote,
 };

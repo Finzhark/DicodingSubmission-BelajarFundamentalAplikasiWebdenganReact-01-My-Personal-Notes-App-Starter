@@ -1,25 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import PropTyes from 'prop-types';
 
-function NoteSearch () {
-  return (
-    <div>
-      <h2>Mencari Catatan Aktif</h2>
-      <div className="search-bar">
-        <input 
-          type="text"
-          placeholder="Cari berdasarkan judul..."
-          value={search}
-          onChange={(event) => searchHandler(event.target.value)}
-        />
-      </div>
-    </div>
-  )
+function NoteSearch({ 
+	onSearch 
+}) {
+	return (
+		<section className="search-bar">
+			<input 
+				type="search" 
+				placeholder="Cari berdasarkan judul..." 
+				onChange={(event) => onSearch(event.target.value)} 
+			/>
+		</section>
+	)
 }
 
-NoteSearch.propType = {
-  search: PropTypes.string.isRequired,
-  searchHandler: PropTypes.func.isRequired,
+NoteSearch.propTypes = {
+	onSearch: PropTyes.func.isRequired,
 }
 
 export default NoteSearch

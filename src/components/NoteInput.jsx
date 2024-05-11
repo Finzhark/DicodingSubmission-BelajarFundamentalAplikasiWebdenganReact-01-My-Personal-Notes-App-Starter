@@ -1,98 +1,62 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { FiCheck } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
-class NoteInput extends React.Component {
+class NoteInput extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       title: '',
-      body: '',
-      remainingTitleChars: 50
+      body: ''
     }
 
-    this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this)
-    this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this)
-    this.onSubmitChangeEventHandler = this.onSubmitChangeEventHandler.bind(this)
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
 
-  onTitleChangeEventHandler(event) {
-    const newTitle = event.target.value;
-    const maxTitleLength = 50;
-    const remainingTitleChars = maxTitleLength - newTitle.length;
-  
-    if (remainingTitleChars >= 0) {
-      this.setState({
-        title: newTitle, 
-        remainingTitleChars: remainingTitleChars
-      })
-    }
+  onTitleChange(event) {
+    this.setState({ title: event.target.value });
+  }
+  onInputHandler(event) {
+    this.setState({ body: event.target.innerHTML })
   }
 
-  onBodyChangeEventHandler(event) {
-    this.setState(() => {
-      return {
-        body: event.target.value,
-      }
-    })
-  }
-
-  onSubmitChangeEventHandler(event) {
-    event.preventDefault()
-
-    this.props.addNote({
-      id: +new Date(),
-      createdAt: new Date(),
-      title: this.state.title,
-      body: this.state.body,
-    })
-
-    this.setState({
-      title: '',
-      body: '',
-      remainingTitleChars: 50
-    })
-
-    // Ngujicoba
-    console.table({
-      id: +new Date(),
-      createdAt: new Date(),
-      title: this.state.title,
-      body: this.state.body,
-    });
+  onSubmitHandler() {
+    this.props.addNote(this.state);
   }
 
   render() {
     return (
-      <div className="note-input">
-        <h2>Membuat Catatan</h2>
-        <form 
-          onSubmit={this.onSubmitChangeEventHandler}
-        >
-          <p className='note-input__title__char-limit'>
-            Sisa karakter: {this.state.remainingTitleChars}
-          </p>
+      <section className='add-new-page'>
+        <div className="add-new-page__input">
           <input 
             type="text" 
-            className='note-input__title'
-            placeholder='Tulis judul di sini...' 
-            value={this.state.title}
-            onChange={this.onTitleChangeEventHandler}
-            required
-          />
-          <textarea 
-            type="text" 
-            className='note-input__body'
-            placeholder='Silakan tulis catatanmu di sini saja...' 
-            value={this.state.body}
-            onChange={this.onBodyChangeEventHandler}
-            required
-          />
-          <button type='submit'>Buat</button>
-        </form>
-      </div>
+            className="add-new-page__input__title" 
+            placeholder='Tambahkan Judul' 
+            value={this.state.title} 
+            onChange={(event) => this.onTitleChange(event)} />
+          <div 
+            className="add-new-page__input__body" 
+            contentEditable 
+            data-placeholder='Tambahkan Isi' 
+            onInput={(event) => this.onInputHandler(event)} />
+        </div>
+        <div className="add-new-page__action">
+          <button 
+            className="action" 
+            type='button' 
+            title='Save' 
+            onClick={this.onSubmitHandler}
+          >
+            <FiCheck />
+          </button>
+        </div>
+      </section>
     )
   }
+}
+
+NoteInput.propTypes = {
+  addNote: PropTypes.func.isRequired,
 }
 
 export default NoteInput

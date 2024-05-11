@@ -1,7 +1,10 @@
 import React from 'react';
+import Navigation from './components/Navigation';
 import { Link, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import NoteAddPage from './pages/NoteAddPage';
+import HomePage from './pages/HomePage';
+import ArchivePage from './pages/ArchivePage';
+import AddPage from './pages/AddPage';
+import DetailPage from './pages/DetailPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -9,20 +12,17 @@ function App() {
     <div className="app-container">
       <header>
         <h1>
-          <Link to="/">
-            My Personal Notes F1
-          </Link>
+          <Link to='/'>My Personal Notes F1</Link>
         </h1>
-        <Navbar />
+        <Navigation />
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/archive" element={<ArchivePage />} />
-          <Route path="/notes/new" element={<NoteAddPage />} />
-          <Route path="/notes:id" element={<NoteDetailPage />} />
-          {/* <Route path="/notes:id/edit" element={<NoteEditPage />} /> */}
-          <Route path="/*" element={<NotFoundPage />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/archive' element={<ArchivePage />} />
+          <Route path='/notes/new' element={<AddPage />} />
+          <Route path='/notes/:id' element={<DetailPage />} />
+          <Route path='/*' element={<NotFoundPage />} />
         </Routes>
       </main>
     </div>

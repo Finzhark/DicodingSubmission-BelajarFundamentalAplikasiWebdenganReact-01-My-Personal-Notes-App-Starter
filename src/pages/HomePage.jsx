@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
 import HomePageAction from '../components/HomePageAction';
 import NoteListItem from '../components/NoteListItem';
-import NoteSearch from '../components/NoteSearch';
+import SearchNote from '../components/NoteSearch';
 import { getActiveNotes, searchNotes } from '../utils/local-data';
-
 import PropTypes from 'prop-types';
 
 function HomePageWrapper() {
@@ -33,6 +31,7 @@ class HomePage extends Component {
 
   onSearch(keyword) {
     this.setState({ keyword });
+
     this.props.onSearch(keyword);
   }
 
@@ -40,8 +39,8 @@ class HomePage extends Component {
     const notes = searchNotes(this.state.notes, this.state.keyword);
     return (
       <section className='homepage'>
-        <NoteSearch onSearch={this.onSearch} />
-        <NoteItemList notes={notes} />
+        <SearchNote onSearch={this.onSearch} />
+        <NoteListItem notes={notes} />
         <HomePageAction />
       </section>
     )
@@ -53,4 +52,4 @@ HomePage.propTypes = {
   defaultKeyword: PropTypes.string,
 }
 
-export default HomePageWrapper;
+export default HomePageWrapper
