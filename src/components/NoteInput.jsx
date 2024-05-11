@@ -45,7 +45,7 @@ class NoteInput extends Component {
           <input 
             type="text" 
             className="add-new-page__input__title" 
-            placeholder='Ketik Judul Di Sini' 
+            placeholder='Ketik Judul Di Sini...' 
             value={this.state.title} 
             onChange={(event) => this.onTitleChange(event)} />
           <div 

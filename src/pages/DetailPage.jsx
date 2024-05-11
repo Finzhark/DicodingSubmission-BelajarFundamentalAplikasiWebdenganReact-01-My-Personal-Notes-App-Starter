@@ -14,7 +14,8 @@ function DetailPageWrapper() {
       <DetailPage 
          id={id} 
          navigate={navigate} 
-      />)
+      />
+   )
 }
 
 class DetailPage extends Component {
