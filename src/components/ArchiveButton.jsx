@@ -30,9 +30,8 @@ function ArchiveButton({
       isArchived(id)
       toast(`Berhasil mengarsipkan catatan.`, {
         icon: <BiArchiveIn />
-      })
+    })
     }
-
     return (
       <button 
         className="action" 
@@ -44,12 +43,10 @@ function ArchiveButton({
       </button>
     )
   }
-
 }
 
 ArchiveButton.propTypes = {
   id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   archived: PropTypes.bool.isRequired,
   isArchived: PropTypes.func.isRequired,
 }

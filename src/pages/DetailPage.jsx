@@ -3,7 +3,12 @@ import React, { Component } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import DetailPageAction from '../components/DetailPageAction';
 import DetailPageBody from '../components/DetailPageBody';
-import { archiveNote, deleteNote, getNote, unarchiveNote } from '../utils/local-data';
+import { 
+	archiveNote, 
+	unarchiveNote, 
+	deleteNote, 
+	getNote, 
+} from '../utils/local-data';
 import NotFoundPage from './NotFoundPage';
 
 function DetailPageWrapper() {
@@ -12,56 +17,57 @@ function DetailPageWrapper() {
 	
 	return (
 		<DetailPage 
-			 id={id} 
-			 navigate={navigate} 
+			id={id} 
+			navigate={navigate} 
 		/>
 	)
 }
 
 class DetailPage extends Component {
 	constructor(props) {
-		 super(props);
+		super(props);
 	
-		 this.state = {
-				note: getNote(props.id),
-		 }
+		this.state = {
+			note: getNote(props.id),
+		}
 	
-		 this.isNoteArchivedHandler = this.isNoteArchivedHandler.bind(this);
-		 this.onDeleteHandler = this.onDeleteHandler.bind(this);
+		this.isNoteArchivedHandler = this.isNoteArchivedHandler.bind(this);
+		this.onDeleteHandler = this.onDeleteHandler.bind(this);
 	}
 	
 	isNoteArchivedHandler(id) {
-		 if (this.state.note.archived) {
-				unarchiveNote(id);
-				this.props.navigate('/');
-		 } else if (!this.state.note.archived) {
-				archiveNote(id);
-				this.props.navigate('/');
-		 }
+		if (this.state.note.archived) {
+			unarchiveNote(id);
+			this.props.navigate('/');
+		} else if (!this.state.note.archived) {
+			archiveNote(id);
+			this.props.navigate('/');
+		}
 	}
 	
 	onDeleteHandler(id) {
-		 deleteNote(id);
-		 this.props.navigate('/');
+		deleteNote(id);
+		this.props.navigate('/');
 	}
 	
 	render() {
-		 if (this.state.note) {
-				return (
-					 <section className='detail-page'>
-							<DetailPageBody note={this.state.note} />
-							<DetailPageAction 
-								 id={this.props.id} 
-								 archived={this.state.note.archived} 
-								 isArchived={this.isNoteArchivedHandler} 
-								 onDelete={this.onDeleteHandler} 
-							/>
-					 </section>
-				)
-		 }
-		 return (
+		if (this.state.note) {
+			return (
+				<section className='detail-page'>
+					<DetailPageBody note={this.state.note} />
+					<DetailPageAction 
+						id={this.props.id} 
+						archived={this.state.note.archived} 
+						isArchived={this.isNoteArchivedHandler} 
+						onDelete={this.onDeleteHandler} 
+					/>
+				</section>
+			)
+		} else {
+			return (
 				<NotFoundPage />
-		 )
+			)
+		}
 	}
 }
 

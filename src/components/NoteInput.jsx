@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { HiX, HiCheck } from 'react-icons/hi';
 import { FaRegFaceSadTear } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
-import { toast } from 'react-hot-toast';
-import parse from 'html-react-parser';
+import { Toaster, toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
 class NoteInput extends Component {
@@ -11,7 +10,7 @@ class NoteInput extends Component {
     super(props);
     this.state = {
       title: '',
-      body: parse('')
+      body: ''
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -49,6 +48,7 @@ class NoteInput extends Component {
   render() {
     return (
       <section className='add-new-page'>
+        <Toaster />
         <div className="add-new-page__input">
           <input 
             type="text" 
