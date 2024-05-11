@@ -38,7 +38,8 @@ class NoteInput extends Component {
             className="add-new-page__input__body" 
             contentEditable 
             data-placeholder='Tambahkan Isi' 
-            onInput={(event) => this.onInputHandler(event)} />
+            onInput={(event) => this.onInputHandler(event)}
+          />
         </div>
         <div className="add-new-page__action">
           <button 
