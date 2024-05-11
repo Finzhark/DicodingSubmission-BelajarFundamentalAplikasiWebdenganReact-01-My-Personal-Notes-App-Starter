@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { HiX, HiCheck } from 'react-icons/hi';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
@@ -82,4 +82,4 @@ NoteInput.propTypes = {
   addNote: PropTypes.func.isRequired,
 }
 
-export default withRouter(NoteInput)
+export default NoteInput
