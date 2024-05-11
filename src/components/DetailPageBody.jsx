@@ -15,9 +15,10 @@ function DetailPageBody({
         {showFormattedDate(note.createdAt)}
       </p>
       <div 
-        className="detail-page__body" >
-        {/* {note.body} */}
-        {parse(note.body)}
+        className="detail-page__body">
+        <p>
+          {parse(note.body)}
+        </p>
       </div>
     </section>
   )

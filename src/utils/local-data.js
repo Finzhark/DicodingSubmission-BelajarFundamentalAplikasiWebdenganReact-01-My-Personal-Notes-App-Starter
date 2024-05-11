@@ -1,3 +1,5 @@
+import parse from 'html-react-parser'
+
 let notes = [
   {
     id: 'notes-1',
@@ -41,6 +43,13 @@ let notes = [
     createdAt: '2022-04-14T04:27:34.572Z',
     archived: false,
   },
+  {
+    id: 'notes-7',
+    title: 'Ini Judul',
+    body: parse('Akulah Arjuna...<b>AAAA...</b> <br/> Yang mencari <i>uang</i>... <br/> Wahai html-react-parserrr <br/> <ul><li><a href="http://github.com">Yaw yaw yaw</a></li></ul>'),
+    createdAt: '2024-04-14T04:27:34.572Z',
+    archived: false,
+  }
 ];
 
 function getAllNotes() {
@@ -65,7 +74,7 @@ function getArchivedNotes() {
 function addNote({ title, body }) {
   notes = [...notes, {
     id: `notes-${+new Date()}`, 
-    title: title || '(untitled)', 
+    title: title || 'Belum Berjudul', 
     body, 
     createdAt: new Date().toISOString(), 
     archived: false,

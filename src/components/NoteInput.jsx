@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { HiX, HiCheck } from 'react-icons/hi';
+import { FaRegFaceSadTear } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 
 class NoteInput extends Component {
@@ -9,7 +11,7 @@ class NoteInput extends Component {
     super(props);
     this.state = {
       title: '',
-      body: ''
+      body: parse('')
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -24,7 +26,7 @@ class NoteInput extends Component {
 
   onInputHandler(event) {
     this.setState({ 
-      body: event.target.textContent 
+      body: event.target.innerHTML 
     })
   }
 
@@ -39,7 +41,9 @@ class NoteInput extends Component {
   }
 
   onCancelHandler() {
-    toast('Yah... nggak jadi buat catatan.')
+    toast('Yah... nggak jadi buat catatan.', {
+      icon: <FaRegFaceSadTear />,
+    })
   }
 
   render() {
@@ -54,10 +58,10 @@ class NoteInput extends Component {
             onChange={(event) => this.onTitleChange(event)} />
           <div 
             className="add-new-page__input__body" 
-            contentEditable 
             data-placeholder='Dear Catatan, aku ingin mencatat...' 
+            contentEditable
             onInput={(event) => this.onInputHandler(event)}
-          />
+          /> 
         </div>
         <div className="add-new-page__action">
           <Link

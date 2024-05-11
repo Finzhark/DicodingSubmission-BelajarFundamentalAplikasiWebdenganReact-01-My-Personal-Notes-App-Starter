@@ -11,15 +11,12 @@ function NotFoundPage() {
       <p className='not-found_text'>
         Halaman Tidak Ditemukan
       </p>
-      <p>
-
       <Link 
         to='/'
         className='not-found_back-to-home'
       > 
-        <HiHome /> Kembali Ke Halaman Utama<HiHome />
+        <HiHome /> Kembali Ke Halaman Utama <HiHome />
       </Link>
-      </p>
     </section>
   )
 }

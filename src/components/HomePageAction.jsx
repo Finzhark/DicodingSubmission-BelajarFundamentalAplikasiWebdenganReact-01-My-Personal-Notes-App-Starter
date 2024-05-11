@@ -10,7 +10,7 @@ function HomePageAction() {
 			<button 
 				className="action" 
 				type="button" 
-				title="Tambah" 
+				title="Tambah Catatan Baru" 
 				onClick={() => navigate('/notes/new')}
 			>
 				<FiPlus />

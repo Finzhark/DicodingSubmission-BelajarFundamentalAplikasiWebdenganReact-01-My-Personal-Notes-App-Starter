@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast } from 'react-hot-toast'
+import { Toaster, toast } from 'react-hot-toast'
 import { MdOutlineDeleteForever } from 'react-icons/md';
 import ArchiveButton from './ArchiveButton';
 import PropTypes from 'prop-types';
@@ -12,12 +12,15 @@ function DetailPageAction({
 }) {
   const onDeleteHandler = () => {
     onDelete(id)
-    toast.success('Catatan telah dihapus!')
+    toast.success(`Catatan telah dihapus!`)
   }
+  
   return (
     <div className="detail-page__action">
+      <Toaster />
       <ArchiveButton 
         id={id} 
+        title={title}
         archived={archived} 
         isArchived={isArchived} 
       />
@@ -36,8 +39,8 @@ function DetailPageAction({
 DetailPageAction.propTypes = {
   id: PropTypes.string.isRequired,
   isArchived: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
   archived: PropTypes.bool.isRequired,
+  onDelete: PropTypes.func.isRequired,
 
 }
 

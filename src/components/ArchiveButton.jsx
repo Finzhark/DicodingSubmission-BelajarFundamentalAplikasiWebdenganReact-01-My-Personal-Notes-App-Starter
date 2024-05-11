@@ -1,5 +1,6 @@
 import React from 'react';
 import { BiArchiveIn, BiArchiveOut } from 'react-icons/bi';
+import { toast } from 'react-hot-toast'
 import PropTypes from 'prop-types';
 
 function ArchiveButton({ 
@@ -8,32 +9,47 @@ function ArchiveButton({
   isArchived 
 }) {
   if (archived) {
+    const onUnarchiveHandler = () => {
+      isArchived(id)
+      toast.success(`Berhasil mengaktifkan catatan.`, {
+        icon: <BiArchiveOut />
+      })
+    }
     return (
       <button 
         className="action" 
         type='button' 
         title='unArchive' 
-        onClick={() => isArchived(id)}
+        onClick={onUnarchiveHandler}
       >
         <BiArchiveOut />
       </button>
     )
+  } else {
+    const onArchiveHandler = () => {
+      isArchived(id)
+      toast(`Berhasil mengarsipkan catatan.`, {
+        icon: <BiArchiveIn />
+      })
+    }
+
+    return (
+      <button 
+        className="action" 
+        type='button' 
+        title='Archived' 
+        onClick={onArchiveHandler}
+      >
+        <BiArchiveIn />
+      </button>
+    )
   }
 
-  return (
-    <button 
-      className="action" 
-      type='button' 
-      title='Archived' 
-      onClick={() => isArchived(id)}
-    >
-      <BiArchiveIn />
-    </button>
-  )
 }
 
 ArchiveButton.propTypes = {
   id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   archived: PropTypes.bool.isRequired,
   isArchived: PropTypes.func.isRequired,
 }
