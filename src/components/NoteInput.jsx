@@ -3,6 +3,7 @@ import { HiX, HiCheck } from 'react-icons/hi';
 import { FaRegFaceSadTear } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
+import parse from 'html-react-parser';
 import PropTypes from 'prop-types';
 
 class NoteInput extends Component {
@@ -10,7 +11,7 @@ class NoteInput extends Component {
     super(props);
     this.state = {
       title: '',
-      body: ''
+      body: parse('')
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);

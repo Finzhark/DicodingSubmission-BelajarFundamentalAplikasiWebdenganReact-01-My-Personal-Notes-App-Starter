@@ -335,6 +335,26 @@ main {
   font-size: 30px;
 }
 
+.toast_button {
+  display: inline;
+  gap: 15px;
+  min-width: 30%;
+  min-height: 30%;
+  text-align: center;
+  border: 2px solid #FFFFFF;
+  border-radius: 10px;
+  padding: 8px 8px 8px 8px;
+  cursor: pointer;
+}
+
+.btn-delete:hover {
+  background-color: red;
+}
+
+btn-stillhere:hover {
+  background-color: aquamarine;
+}
+
 @keyframes notfoundanimate {
   0% {
     color: #FFFFFF;

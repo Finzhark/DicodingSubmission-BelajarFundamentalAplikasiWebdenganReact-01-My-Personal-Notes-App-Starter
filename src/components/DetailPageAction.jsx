@@ -1,6 +1,7 @@
 import React from 'react';
-import { Toaster, toast } from 'react-hot-toast'
+import { toast } from 'react-hot-toast'
 import { MdOutlineDeleteForever } from 'react-icons/md';
+import { BiHappyBeaming } from "react-icons/bi";
 import ArchiveButton from './ArchiveButton';
 import PropTypes from 'prop-types';
 
@@ -11,16 +12,38 @@ function DetailPageAction({
   onDelete 
 }) {
   const onDeleteHandler = () => {
-    onDelete(id)
-    toast.success(`Catatan telah dihapus!`)
+    toast((t) => (
+      <span>
+        Ingin menghapus catatan ini? <br/>
+        <button
+          className='toast_button btn-delete' 
+          onClick={() => {
+            onDelete(id)
+            toast.dismiss()
+            toast('Catatan berhasil dihapus!', {
+              icon: <MdOutlineDeleteForever />
+            })
+          }}
+        >
+          Iya
+        </button>
+        <button 
+          className='toast_button btn-stillhere'
+          onClick={() => {
+            toast.remove()
+            toast('Tenang, catatannya masih ada!', {
+              duration: 1000,
+              icon: <BiHappyBeaming />,
+            })
+          }}
+        >JANGAN!</button>
+      </span>
+    ))
   }
-  
   return (
     <div className="detail-page__action">
-      <Toaster />
       <ArchiveButton 
         id={id} 
-        title={title}
         archived={archived} 
         isArchived={isArchived} 
       />
