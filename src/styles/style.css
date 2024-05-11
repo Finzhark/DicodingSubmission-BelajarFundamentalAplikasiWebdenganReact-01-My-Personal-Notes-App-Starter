@@ -49,7 +49,7 @@ body {
       rgba(0, 0, 0, 0.3)),
     url('../images/gambar-catatan.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
   background-attachment: fixed;
   min-height: 100vh;
