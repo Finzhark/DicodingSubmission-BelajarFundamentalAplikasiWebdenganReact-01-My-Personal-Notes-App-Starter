@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { HiX, HiCheck } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import { Toaster, toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
 class NoteInput extends Component {
@@ -13,6 +13,7 @@ class NoteInput extends Component {
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    this.onCancelHandler = this.onCancelHandler.bind(this);
   }
 
   onTitleChange(event) {
@@ -37,10 +38,13 @@ class NoteInput extends Component {
     }
   }
 
+  onCancelHandler() {
+    toast('Yah... nggak jadi buat catatan.')
+  }
+
   render() {
     return (
       <section className='add-new-page'>
-        <Toaster />
         <div className="add-new-page__input">
           <input 
             type="text" 
@@ -61,6 +65,7 @@ class NoteInput extends Component {
             className="action" 
             type='button' 
             title='Batal'
+            onClick={this.onCancelHandler}
           >
             <HiX />
           </Link>
