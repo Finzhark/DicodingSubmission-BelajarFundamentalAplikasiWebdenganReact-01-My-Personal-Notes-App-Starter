@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function NotFoundPage() {
   return (
@@ -9,6 +10,10 @@ function NotFoundPage() {
       <p className='not-found_text'>
         Halaman Tidak Ditemukan
       </p>
+      <Link 
+        to='/'
+        className='not-found_back-to-home'
+      >Kembali Ke Halaman Utama</Link>
     </section>
   )
 }

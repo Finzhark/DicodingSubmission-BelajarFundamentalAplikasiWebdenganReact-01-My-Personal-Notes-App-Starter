@@ -1,5 +1,6 @@
 import React from 'react';
 import { showFormattedDate } from '../utils/index';
+import parse from'html-react-parser';
 import PropTypes from 'prop-types';
 
 function DetailPageBody({ 
@@ -13,8 +14,10 @@ function DetailPageBody({
       <p className="detail-page__createdAt">
         {showFormattedDate(note.createdAt)}
       </p>
-      <div className="detail-page__body" >
-        {note.body}
+      <div 
+        className="detail-page__body" >
+        {/* {note.body} */}
+        {parse(note.body)}
       </div>
     </section>
   )

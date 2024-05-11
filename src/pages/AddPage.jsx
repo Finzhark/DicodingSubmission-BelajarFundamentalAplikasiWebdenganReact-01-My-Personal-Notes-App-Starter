@@ -12,7 +12,12 @@ function AddPage() {
   }
 
   return (
-    <NoteInput addNote={onAddNoteHandler} />
+    <section className='homepage'>
+      <h2>Ingin mencatat apa?</h2>
+      <NoteInput 
+        addNote={onAddNoteHandler} 
+      />
+    </section>
   )
 }
 

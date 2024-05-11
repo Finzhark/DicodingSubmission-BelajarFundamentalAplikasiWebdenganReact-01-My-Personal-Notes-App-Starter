@@ -11,14 +11,19 @@ function ArchivePageWrapper() {
   const title = searchParams.get('title');
 
   function changeSearchParams(keyword) {
-    setSearchParams({ title: keyword });
+    setSearchParams({ 
+      title: keyword 
+    });
   }
 
   return (
-    <ArchivePage 
-      onSearch={changeSearchParams} 
-      defaultKeyword={title} 
-    />
+    <section className='homepage'>
+      <h2>Catatan Arsip</h2>
+      <ArchivePage 
+        onSearch={changeSearchParams} 
+        defaultKeyword={title} 
+      />
+    </section>
   )
 }
 

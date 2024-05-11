@@ -25,8 +25,12 @@ function App() {
           <Route path='/*' element={<NotFoundPage />} />
         </Routes>
       </main>
+      <footer>
+        <hr/>
+        <p>Dicoding Submission - Belajar Fundamental Aplikasi Web dengan React &#169; 2024, Finzhark</p>
+      </footer>
     </div>
   );
 }
 
-export default App;
+export default App

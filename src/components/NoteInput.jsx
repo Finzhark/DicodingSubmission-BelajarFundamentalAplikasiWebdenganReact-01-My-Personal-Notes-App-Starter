@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { FiCheck } from 'react-icons/fi';
+import { HiX, HiCheck } from 'react-icons/hi';
+import { useNavigate, Link } from 'react-router-dom';
+import { Toaster, toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
 class NoteInput extends Component {
@@ -11,22 +13,41 @@ class NoteInput extends Component {
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    this.onCancelHandler = this.onCancelHandler.bind(this);
   }
 
   onTitleChange(event) {
     this.setState({ title: event.target.value });
   }
+
   onInputHandler(event) {
-    this.setState({ body: event.target.innerHTML })
+    this.setState({ body: event.target.textContent })
   }
 
   onSubmitHandler() {
-    this.props.addNote(this.state);
+    const { title, body } = this.state;
+
+    if (body.trim() === '') {
+      toast.error('Catatan belum diisi!')
+    } else {
+      this.props.addNote({ title, body })
+    }
+  }
+
+  onCancelHandler() {
+    // const navigate = useNavigate()
+    toast.error('Tidak Jadi Membuat Catatan',
+      {
+        duration: 3000,
+      }
+    )
+    // navigate('/')
   }
 
   render() {
     return (
       <section className='add-new-page'>
+        <Toaster />
         <div className="add-new-page__input">
           <input 
             type="text" 
@@ -42,15 +63,25 @@ class NoteInput extends Component {
           />
         </div>
         <div className="add-new-page__action">
+          <Link
+            to='/'
+            className="action" 
+            type='button' 
+            title='Batal'
+            onClick={this.onCancelHandler}
+          >
+            <HiX />
+          </Link>
           <button 
             className="action" 
             type='button' 
-            title='Save' 
+            title='Simpan' 
             onClick={this.onSubmitHandler}
           >
-            <FiCheck />
+            <HiCheck />
           </button>
         </div>
+        
       </section>
     )
   }

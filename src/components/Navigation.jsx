@@ -6,6 +6,9 @@ function Navigation() {
     <nav className='navigation'>
       <ul>
         <li>
+          <Link to='/'>Catatan Aktif</Link>
+        </li>
+        <li>
           <Link to='/archive'>Arsip</Link>
         </li>
       </ul>

@@ -32,6 +32,7 @@ a {
 
 body {
   font-family: 'Inter', sans-serif;
+  min-height: 100vh;
 }
 
 .app-container {
@@ -39,18 +40,25 @@ body {
   background-color: var(--background);
   min-height: 100vh;
   transition: all ease-in-out 0.5s;
+  /* tambahan */
+  display: flex;
+  flex-direction: column;
 }
 
 header {
+  width: 100%;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;
   border-bottom: 1px solid var(--on-background);
+  background-color: #121212;
 }
 
 header h1 {
   flex: 1;
+  font-size: xx-large;
 }
 
 a {
@@ -68,11 +76,24 @@ header .navigation ul li {
   margin: 0 8px;
 }
 
+footer {
+  margin-top: 0;
+  line-height: 1.5rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+footer hr {
+  margin: 15px auto;
+}
+
 main {
-  margin: 0 auto;
+  margin: 4rem auto 0 auto;
   padding: 32px 0;
   width: 90%;
   max-width: 1200px;
+  /* tambahan */
+  flex-grow: 1;
 }
 
 .notes-list {
@@ -146,7 +167,7 @@ main {
   position: fixed;
   display: flex;
   gap: 16px;
-  bottom: 32px;
+  bottom: 90px;
   right: 32px;
 }
 
@@ -280,7 +301,9 @@ main {
   color: var(--on-background);
 }
 
-.not-found_404, .not-found_text {
+.not-found_404, 
+.not-found_text, 
+.not-found_back-to-home {
   height: 100%;
   width: auto;
   display: flex;

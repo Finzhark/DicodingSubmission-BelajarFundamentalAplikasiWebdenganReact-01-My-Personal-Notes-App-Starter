@@ -39,6 +39,7 @@ class HomePage extends Component {
     const notes = searchNotes(this.state.notes, this.state.keyword);
     return (
       <section className='homepage'>
+        <h2>Catatan Aktif</h2>
         <SearchNote onSearch={this.onSearch} />
         <NoteListItem notes={notes} />
         <HomePageAction />
