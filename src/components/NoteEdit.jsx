@@ -24,10 +24,19 @@ class NoteEdit extends Component {
   }
 
   onInputHandler(event) {
-    this.setState({ 
-      body: event.target.innerHTML 
-    })
-  }
+  const selection = window.getSelection();
+  const range = selection.getRangeAt(0);
+  const startOffset = range.startOffset;
+
+  this.setState({ 
+    body: event.target.innerHTML 
+  }, () => {
+    const newRange = document.createRange();
+    newRange.setStart(this.inputBody.childNodes[0], startOffset);
+    selection.removeAllRanges();
+    selection.addRange(newRange);
+  })
+}
 
   onSubmitHandler() {
     const { title, body } = this.state;
@@ -66,6 +75,7 @@ class NoteEdit extends Component {
             contentEditable
             onInput={(event) => this.onInputHandler(event)}
             dangerouslySetInnerHTML={{ __html: this.state.body }}
+            ref={(el) => { this.inputBody = el; }}
           /> 
         </div>
         <div className="add-new-page__action">
