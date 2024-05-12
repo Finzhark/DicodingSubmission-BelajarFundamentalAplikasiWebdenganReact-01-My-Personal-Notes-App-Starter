@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { HiX, HiCheck } from 'react-icons/hi';
-import { FaRegFaceSadTear } from "react-icons/fa6";
+import { BiWinkSmile } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
 import PropTypes from 'prop-types';
 
-class NoteInput extends Component {
+class NoteEdit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: '',
-      body: '',
+      title: props.note.title,
+      body: props.note.body,
     }
 
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
@@ -33,15 +33,19 @@ class NoteInput extends Component {
     const { title, body } = this.state;
 
     if (body.trim() === '') {
-      toast.error('Catatan belum diisi!')
+      toast.error('Tidak bisa menyimpan catatan kosong!')
     } else {
-      this.props.addNote({ title, body })
+      this.props.editNote({ 
+        id: this.props.id,
+        title,
+        body
+      })
     }
   }
 
   onCancelHandler() {
-    toast('Yah... nggak jadi buat catatan.', {
-      icon: <FaRegFaceSadTear />,
+    toast('Catatan tidak berubah.', {
+      icon: <BiWinkSmile />,
     })
   }
 
@@ -61,6 +65,7 @@ class NoteInput extends Component {
             data-placeholder='Dear Catatan, aku ingin mencatat...' 
             contentEditable
             onInput={(event) => this.onInputHandler(event)}
+            dangerouslySetInnerHTML={{ __html: this.state.body }}
           /> 
         </div>
         <div className="add-new-page__action">
@@ -87,8 +92,10 @@ class NoteInput extends Component {
   }
 }
 
-NoteInput.propTypes = {
-  addNote: PropTypes.func.isRequired,
+NoteEdit.propTypes = {
+  id: PropTypes.func.isRequired,
+  note: PropTypes.object.isRequired,
+  editNote: PropTypes.func.isRequired,
 }
 
-export default NoteInput
+export default NoteEdit

@@ -1,6 +1,7 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast'
-import { MdOutlineDeleteForever } from 'react-icons/md';
+import { MdOutlineDeleteForever, MdModeEdit } from 'react-icons/md';
 import { BiHappyBeaming } from "react-icons/bi";
 import ArchiveButton from './ArchiveButton';
 import PropTypes from 'prop-types';
@@ -9,7 +10,8 @@ function DetailPageAction({
   id, 
   archived, 
   isArchived, 
-  onDelete 
+  onDelete,
+  onEdit 
 }) {
   const onDeleteHandler = () => {
     toast((t) => (
@@ -40,6 +42,13 @@ function DetailPageAction({
       </span>
     ))
   }
+
+  const onEditHandler = () => {
+    onEdit(id)
+    // const navigate = useNavigate()
+    // navigate('/notes/:id/edit')
+  }
+
   return (
     <div className="detail-page__action">
       <ArchiveButton 
@@ -50,7 +59,15 @@ function DetailPageAction({
       <button 
         className="action" 
         type='button' 
-        title='Delete' 
+        title='Sunting' 
+        onClick={onEditHandler}
+      >
+        <MdModeEdit />
+      </button>
+      <button 
+        className="action" 
+        type='button' 
+        title='Hapus' 
         onClick={onDeleteHandler}
       >
         <MdOutlineDeleteForever />
@@ -64,7 +81,7 @@ DetailPageAction.propTypes = {
   isArchived: PropTypes.func.isRequired,
   archived: PropTypes.bool.isRequired,
   onDelete: PropTypes.func.isRequired,
-
+  onEdit: PropTypes.func.isRequired,
 }
 
 export default DetailPageAction
