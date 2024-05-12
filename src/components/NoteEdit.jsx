@@ -62,7 +62,7 @@ class NoteEdit extends Component {
             onChange={(event) => this.onTitleChange(event)} />
           <div 
             className="add-new-page__input__body" 
-            data-placeholder='Dear Catatan, aku ingin mencatat...' 
+            data-placeholder='Dear Catatan, aku ingin mengubah catatan...' 
             contentEditable
             onInput={(event) => this.onInputHandler(event)}
             dangerouslySetInnerHTML={{ __html: this.state.body }}
