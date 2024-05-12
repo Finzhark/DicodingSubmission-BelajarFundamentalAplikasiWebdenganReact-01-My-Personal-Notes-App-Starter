@@ -27,10 +27,10 @@ function DetailPageAction({
             })
           }}
         >
-          Iya
+          Ya
         </button>
         <button 
-          className='toast_button btn-stillhere'
+          className='toast_button btn-cancel'
           onClick={() => {
             toast.remove()
             toast('Tenang, catatannya masih ada!', {
@@ -38,15 +38,15 @@ function DetailPageAction({
               icon: <BiHappyBeaming />,
             })
           }}
-        >JANGAN!</button>
+        >Tidak</button>
       </span>
-    ))
+    ), {
+      duration: 3000,
+    })
   }
 
   const onEditHandler = () => {
     onEdit(id)
-    // const navigate = useNavigate()
-    // navigate('/notes/:id/edit')
   }
 
   return (

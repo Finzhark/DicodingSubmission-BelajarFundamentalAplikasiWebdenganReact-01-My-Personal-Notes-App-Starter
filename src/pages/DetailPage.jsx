@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { FaCircleArrowLeft } from "react-icons/fa6";
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import DetailPageAction from '../components/DetailPageAction';
 import DetailPageBody from '../components/DetailPageBody';
 import { 
@@ -59,6 +60,9 @@ class DetailPage extends Component {
 		if (this.state.note) {
 			return (
 				<section className='detail-page'>
+					<Link to='/'>
+						<FaCircleArrowLeft /> Kembali
+					</Link>
 					<DetailPageBody note={this.state.note} />
 					<DetailPageAction 
 						id={this.props.id} 

@@ -33,15 +33,19 @@ class NoteInput extends Component {
     const { title, body } = this.state;
 
     if (body.trim() === '') {
-      toast.error('Catatan belum diisi!')
+      toast.error('Catatan belum diisi!', {
+        duration: 1200,
+      })
     } else {
       this.props.addNote({ title, body })
+      toast.success('Catatan berhasil dibuat!')
     }
   }
 
   onCancelHandler() {
     toast('Yah... nggak jadi buat catatan.', {
       icon: <FaRegFaceSadTear />,
+      duration: 1000,
     })
   }
 

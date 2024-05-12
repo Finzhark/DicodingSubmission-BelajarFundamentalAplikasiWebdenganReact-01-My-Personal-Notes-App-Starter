@@ -49,12 +49,14 @@ class NoteEdit extends Component {
         title,
         body
       })
+      toast.success('Catatan sukses diubah!')
     }
   }
 
   onCancelHandler() {
-    toast('Catatan tidak berubah.', {
+    toast('Anda tidak jadi menyunting catatan.', {
       icon: <BiWinkSmile />,
+      duration: 1500,
     })
   }
 

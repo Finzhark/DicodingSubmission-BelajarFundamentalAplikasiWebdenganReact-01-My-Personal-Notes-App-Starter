@@ -348,12 +348,24 @@ main {
   cursor: pointer;
 }
 
-.btn-delete:hover {
-  background-color: red;
+.btn-delete {
+  background-color: crimson;
+  color: #FFFFFF;
 }
 
-btn-stillhere:hover {
-  background-color: aquamarine;
+.btn-cancel {
+  background-color: darkcyan;
+  color: #FFFFFF;
+}
+
+.btn-delete:hover {
+  background-color: red;
+  color: #FFFFFF;
+}
+
+.btn-cancel:hover {
+  background-color: darkturquoise;
+  color: #FFFFFF;
 }
 
 @keyframes notfoundanimate {
