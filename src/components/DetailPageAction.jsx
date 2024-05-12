@@ -21,9 +21,10 @@ function DetailPageAction({
           className='toast_button btn-delete' 
           onClick={() => {
             onDelete(id)
-            toast.dismiss()
+            toast.remove()
             toast('Catatan berhasil dihapus!', {
-              icon: <MdOutlineDeleteForever />
+              icon: <MdOutlineDeleteForever />,
+              duration: 1000,
             })
           }}
         >
